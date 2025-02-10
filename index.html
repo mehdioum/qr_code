@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test QR Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+</head>
+<body>
+    <h1>Test Génération QR Code</h1>
+
+    <!-- Formulaire de saisie du nom -->
+    <label for="name">Entrez votre nom : </label>
+    <input type="text" id="name" placeholder="Votre nom">
+    <button onclick="generateQRCode()">Générer le QR Code</button>
+
+    <!-- Affichage du QR Code généré -->
+    <div id="qrcode"></div>
+
+    <script>
+        function generateQRCode() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                const url = `Nom: ${name}`;  // Texte simple pour le QR code
+
+                // Générer le QR code dans le div avec id "qrcode"
+                QRCode.toCanvas(document.getElementById('qrcode'), url, function (error) {
+                    if (error) {
+                        console.error("Erreur lors de la génération du QR code:", error);
+                    } else {
+                        console.log("QR Code généré avec succès");
+                    }
+                });
+            } else {
+                alert("Veuillez entrer un nom.");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+
